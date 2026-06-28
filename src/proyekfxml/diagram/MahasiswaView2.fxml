@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  SplitPane membagi stage menjadi 2 bagian:
+   - KIRI  : TableView berisi data mahasiswa
+   - KANAN : VBox kosong (wadahDiagram) -> BarChart ditambahkan dari controller.
+
+  Catatan: BarChart sengaja TIDAK dideklarasikan di FXML untuk menghindari
+  error "BarChart cannot be created by FXML loader" (kelas chart tidak punya
+  konstruktor kosong). Chart dibangun secara terprogram di controller.
+-->
+<SplitPane dividerPositions="0.5" prefHeight="500.0" prefWidth="900.0"
+           xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="proyekfxml.diagram.MahasiswaController2">
+    <items>
+
+        <!-- ============ BAGIAN KIRI: TABEL ============ -->
+        <VBox spacing="10.0">
+            <padding>
+                <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+            </padding>
+            <children>
+                <Label text="Data Mahasiswa"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <TableView fx:id="tabelMahasiswa" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="kolomNim"   text="NIM"   prefWidth="110.0"/>
+                        <TableColumn fx:id="kolomNama"  text="Nama"  prefWidth="160.0"/>
+                        <TableColumn fx:id="kolomNilai" text="Nilai" prefWidth="90.0"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+
+        <!-- ============ BAGIAN KANAN: WADAH DIAGRAM ============ -->
+        <VBox fx:id="wadahDiagram" spacing="10.0">
+            <padding>
+                <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+            </padding>
+            <children>
+                <Label text="Diagram Nilai"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <!-- BarChart akan disisipkan di sini oleh controller -->
+            </children>
+        </VBox>
+
+    </items>
+</SplitPane>
