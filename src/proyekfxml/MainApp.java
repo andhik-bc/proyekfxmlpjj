@@ -19,10 +19,10 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass()
-                .getResource("diagram/MahasiswaView2.fxml"));
+                .getResource("diagram/MahasiswaChooseDiagram.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
-        stage.setTitle("DATA PESERTA PELATIHAN PROGRAMMING");
+        stage.setTitle("KULIAH FPA PJJ DAN REGULER IF UII");
         stage.show();
     }
 

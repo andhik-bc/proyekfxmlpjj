@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Orientation?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  Tata letak baru memakai BorderPane (3 area):
+    TOP    : header judul aplikasi
+    CENTER : SplitPane -> tabel (kiri) + wadah diagram (kanan)
+    BOTTOM : bilah ringkasan statistik nilai
+
+  Tanpa CSS: ukuran/tebal huruf diatur lewat elemen <Font>,
+  jarak lewat <Insets>, perataan lewat properti alignment.
+-->
+<BorderPane prefHeight="540.0" prefWidth="920.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="proyekfxml.diagram.MahasiswaPieChartController">
+
+    <!-- ================= HEADER ================= -->
+    <top>
+        <VBox spacing="2.0">
+            <padding>
+                <Insets top="14.0" right="16.0" bottom="10.0" left="16.0"/>
+            </padding>
+            <children>
+                <Label text="Sistem Informasi Nilai Mahasiswa">
+                    <font><Font name="System Bold" size="20.0"/></font>
+                </Label>
+                <Label text="Praktikum SIF202 - JavaFX &amp; FXML">
+                    <font><Font size="12.0"/></font>
+                </Label>
+                <Separator/>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- ================= ISI ================= -->
+    <center>
+        <SplitPane dividerPositions="0.55">
+
+            <!-- KIRI: tabel -->
+            <VBox spacing="8.0">
+                <padding>
+                    <Insets top="10.0" right="10.0" bottom="10.0" left="12.0"/>
+                </padding>
+                <children>
+                    <Label text="Data Mahasiswa">
+                        <font><Font name="System Bold" size="14.0"/></font>
+                    </Label>
+                    <TableView fx:id="tabelMahasiswa" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="kolomNim"   text="NIM"   prefWidth="110.0"/>
+                            <TableColumn fx:id="kolomNama"  text="Nama"  prefWidth="150.0"/>
+                            <TableColumn fx:id="kolomNilai" text="Nilai" prefWidth="80.0"/>
+                        </columns>
+                    </TableView>
+                </children>
+            </VBox>
+
+            <!-- KANAN: wadah diagram (PieChart disisipkan controller) -->
+            <VBox fx:id="wadahDiagram" spacing="8.0" alignment="TOP_CENTER">
+                <padding>
+                    <Insets top="10.0" right="12.0" bottom="10.0" left="10.0"/>
+                </padding>
+                <children>
+                    <Label text="Distribusi Kategori Nilai">
+                        <font><Font name="System Bold" size="14.0"/></font>
+                    </Label>
+                </children>
+            </VBox>
+
+        </SplitPane>
+    </center>
+
+    <!-- ================= BILAH RINGKASAN ================= -->
+    <bottom>
+        <VBox>
+            <children>
+                <Separator/>
+                <HBox spacing="18.0" alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets top="8.0" right="16.0" bottom="10.0" left="16.0"/>
+                    </padding>
+                    <children>
+                        <Label text="Jumlah:"/>
+                        <Label fx:id="lblJumlah" text="-">
+                            <font><Font name="System Bold" size="12.0"/></font>
+                        </Label>
+
+                        <Separator orientation="VERTICAL"/>
+
+                        <Label text="Rata-rata:"/>
+                        <Label fx:id="lblRata" text="-">
+                            <font><Font name="System Bold" size="12.0"/></font>
+                        </Label>
+
+                        <Separator orientation="VERTICAL"/>
+
+                        <Label text="Tertinggi:"/>
+                        <Label fx:id="lblTertinggi" text="-">
+                            <font><Font name="System Bold" size="12.0"/></font>
+                        </Label>
+
+                        <Separator orientation="VERTICAL"/>
+
+                        <Label text="Terendah:"/>
+                        <Label fx:id="lblTerendah" text="-">
+                            <font><Font name="System Bold" size="12.0"/></font>
+                        </Label>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </bottom>
+
+</BorderPane>

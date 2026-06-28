@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  Tata letak:
+    TOP    : header
+    CENTER : SplitPane -> tabel (kiri) + panel diagram (kanan)
+               panel kanan berisi:
+                 - pemilih jenis diagram (ComboBox)
+                 - wadah diagram (StackPane, diisi controller)
+                 - panel legenda (berubah saat bagian diagram diklik)
+  Tanpa CSS: penataan memakai Font / Insets / Separator / alignment.
+-->
+<BorderPane prefHeight="560.0" prefWidth="940.0"
+            xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="proyekfxml.diagram.MahasiswaChooseDiagramController">
+
+    <!-- ===== HEADER ===== -->
+    <top>
+        <VBox spacing="2.0">
+            <padding><Insets top="14.0" right="16.0" bottom="10.0" left="16.0"/></padding>
+            <children>
+                <Label text="Sistem Informasi Nilai Mahasiswa">
+                    <font><Font name="System Bold" size="20.0"/></font>
+                </Label>
+                <Label text="Praktikum SIF202 - JavaFX &amp; FXML">
+                    <font><Font size="12.0"/></font>
+                </Label>
+                <Separator/>
+            </children>
+        </VBox>
+    </top>
+
+    <!-- ===== ISI ===== -->
+    <center>
+        <SplitPane dividerPositions="0.52">
+
+            <!-- KIRI: tabel -->
+            <VBox spacing="8.0">
+                <padding><Insets top="10.0" right="10.0" bottom="10.0" left="12.0"/></padding>
+                <children>
+                    <Label text="Data Mahasiswa">
+                        <font><Font name="System Bold" size="14.0"/></font>
+                    </Label>
+                    <TableView fx:id="tabelMahasiswa" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="kolomNim"   text="NIM"   prefWidth="110.0"/>
+                            <TableColumn fx:id="kolomNama"  text="Nama"  prefWidth="150.0"/>
+                            <TableColumn fx:id="kolomNilai" text="Nilai" prefWidth="80.0"/>
+                        </columns>
+                    </TableView>
+                </children>
+            </VBox>
+
+            <!-- KANAN: pemilih + diagram + legenda -->
+            <VBox spacing="8.0">
+                <padding><Insets top="10.0" right="12.0" bottom="10.0" left="10.0"/></padding>
+                <children>
+
+                    <!-- pemilih jenis diagram -->
+                    <HBox spacing="8.0" alignment="CENTER_LEFT">
+                        <children>
+                            <Label text="Jenis Diagram:"/>
+                            <ComboBox fx:id="pilihanDiagram" prefWidth="160.0"/>
+                        </children>
+                    </HBox>
+
+                    <!-- wadah diagram -->
+                    <StackPane fx:id="wadahDiagram" VBox.vgrow="ALWAYS"/>
+
+                    <!-- panel legenda -->
+                    <Separator/>
+                    <Label text="Legenda Data">
+                        <font><Font name="System Bold" size="13.0"/></font>
+                    </Label>
+                    <Label fx:id="lblLegenda" text="-" wrapText="true" minHeight="70.0"/>
+
+                </children>
+            </VBox>
+
+        </SplitPane>
+    </center>
+
+</BorderPane>
