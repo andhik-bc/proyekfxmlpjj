@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  SplitPane membagi stage menjadi 2 bagian:
+   - KIRI  : TableView berisi data mahasiswa
+   - KANAN : BarChart yang menampilkan nilai
+  dividerPositions="0.5" -> garis pemisah tepat di tengah (bisa digeser).
+-->
+<SplitPane dividerPositions="0.5" prefHeight="500.0" prefWidth="900.0"
+           xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="proyekfxml.diagram.MahasiswaController">
+    <items>
+
+        <!-- ============ BAGIAN KIRI: TABEL ============ -->
+        <VBox spacing="10.0">
+            <padding>
+                <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+            </padding>
+            <children>
+                <Label text="Data Mahasiswa"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <TableView fx:id="tabelMahasiswa" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="kolomNim"   text="NIM"   prefWidth="110.0"/>
+                        <TableColumn fx:id="kolomNama"  text="Nama"  prefWidth="160.0"/>
+                        <TableColumn fx:id="kolomNilai" text="Nilai" prefWidth="90.0"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+
+        <!-- ============ BAGIAN KANAN: DIAGRAM ============ -->
+        <VBox spacing="10.0">
+            <padding>
+                <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+            </padding>
+            <children>
+                <Label text="Diagram Nilai"
+                       style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <BarChart fx:id="diagramNilai" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis fx:id="sumbuX" label="Nama Mahasiswa"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis fx:id="sumbuY" label="Nilai"
+                                    lowerBound="0" upperBound="100" tickUnit="10"
+                                    autoRanging="false"/>
+                    </yAxis>
+                </BarChart>
+            </children>
+        </VBox>
+
+    </items>
+</SplitPane>
