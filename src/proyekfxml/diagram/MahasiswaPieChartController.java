@@ -76,7 +76,8 @@ public class MahasiswaPieChartController {
             else if (n >= 60) c++;
             else              d++;
         }
-
+        
+        //menyusun data yang akan ditampilkan di Pie chart
         ObservableList<PieChart.Data> dataPie = FXCollections.observableArrayList();
         if (a > 0) dataPie.add(new PieChart.Data("A (\u226585): " + a, a));
         if (b > 0) dataPie.add(new PieChart.Data("B (70-84): " + b, b));
@@ -92,7 +93,7 @@ public class MahasiswaPieChartController {
 
     /**
      * Menghitung jumlah, rata-rata, nilai tertinggi, dan terendah,
-     * lalu menampilkannya pada bilah ringkasan.
+     * lalu menampilkannya pada bilah ringkasan. Menampilkan dalam legenda
      */
     private void hitungRingkasan() {
         int jumlah = dataMahasiswa.size();
