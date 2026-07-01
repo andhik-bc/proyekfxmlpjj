@@ -27,6 +27,7 @@ public class MahasiswaModel {
     // --- nim ---
     public String getNim()            { return nim.get(); }
     public void   setNim(String v)    { nim.set(v); }
+    //kode bagian ini nanti dipakai untuk setup value pada kolom menggunakan lamda expression
     public StringProperty nimProperty()  { return nim; }
 
     // --- nama ---

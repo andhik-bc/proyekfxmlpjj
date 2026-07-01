@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="500.0" prefWidth="700.0"
+            xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="proyekfxml.csvLoader.MahasiswaCsvController">
+    <top>
+        <VBox spacing="8.0">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+            <HBox spacing="8.0">
+                <Button fx:id="btnPilihBerkas" text="Pilih Berkas CSV..."/>
+                <Label fx:id="lblPathBerkas" text="(belum ada berkas dipilih)"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tabelMahasiswa">
+            <BorderPane.margin>
+                <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+            </BorderPane.margin>
+            <columns>
+                <TableColumn fx:id="kolomNim" text="NIM" prefWidth="120"/>
+                <TableColumn fx:id="kolomNama" text="Nama" prefWidth="180"/>
+                <TableColumn fx:id="kolomJurusan" text="Jurusan" prefWidth="150"/>
+                <TableColumn fx:id="kolomIpk" text="IPK" prefWidth="80"/>
+            </columns>
+            
+        </TableView>
+    </center>
+    <bottom>
+        <VBox spacing="8.0">
+            <padding><Insets top="0" right="10" bottom="10" left="10"/></padding>
+            <Button fx:id="btnImpor" text="Impor Data ke Tabel"/>
+            <Label fx:id="lblStatus" wrapText="true"/>
+        </VBox>
+    </bottom>
+</BorderPane>
+
