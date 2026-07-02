@@ -19,7 +19,7 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass()
-                .getResource("diagram/MahasiswaPieChart.fxml"));
+                .getResource("csvLoader/MahasiswaCsv.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("KULIAH FPA PJJ DAN REGULER IF UII");
